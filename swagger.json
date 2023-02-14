@@ -1,0 +1,90 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "express&swagger-ui",
+        "description": "接口联调",
+        "version": "1.0.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/test": {
+            "post": {
+                "x-swagger-router-controller": "home",
+                "operationId": "index",
+                "tags": [
+                    "/test"
+                ],
+                "description": "[Login 123](https://www.google.com)",
+                "parameters": [
+                    {
+                        "name": "test",
+                        "in": "formData",
+                        "type": "array",
+                        "collectionFormat": "multi",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "profileId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "type": "file",
+                        "required": "true"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/bar": {
+            "get": {
+                "x-swagger-router-controller": "bar",
+                "operationId": "impossible",
+                "tags": [
+                    "/test"
+                ],
+                "description": "",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/files": {
+            "post": {
+                "x-swagger-router-controller": "home",
+                "operationId": "index",
+                "tags": [
+                    "/file"
+                ],
+                "description": "获取文件列表",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/uploadFile": {
+            "post": {
+                "x-swagger-router-controller": "home",
+                "operationId": "index",
+                "tags": [
+                    "/file"
+                ],
+                "description": "文件上传",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "type": "file",
+                        "required": "true"
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "express_minio",
+  "version": "1.0.0",
+  "description": "express miniojs ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mts"
+  },
+  "author": "sssh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "formidable": "2.1.1",
+    "minio": "^7.0.32",
+    "mongodb": "^5.0.1",
+    "swagger-ui-express": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/minio": "^7.0.15"
+  }
+}
