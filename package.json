@@ -1,11 +1,12 @@
 {
-  "name": "express_minio",
+  "name": "express_server",
   "version": "1.0.0",
-  "description": "express miniojs ",
-  "main": "index.js",
+  "description": "express server miniojs",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mts"
+    "dev": "set NODE_ENV=DEV && node index.ts",
+    "pro": "set NODE_ENV=PRO && node index.ts"
   },
   "author": "sssh",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "formidable": "2.1.1",
     "minio": "^7.0.32",
     "mongodb": "^5.0.1",
+    "mysql": "^2.18.1",
     "swagger-ui-express": "^4.6.0"
   },
   "devDependencies": {

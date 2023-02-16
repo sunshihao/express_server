@@ -1,11 +1,15 @@
 /** minio */
 const Minio = require("minio");
 const Fs = require("fs");
+const { MINIO } = require("./global.ts");
 const DEFINE_BUCKET_NAME = "sssh";
 
 let bucketName = DEFINE_BUCKET_NAME;
 
 let minioClient;
+
+//   console.log('process.env.NODE_ENV', MINIO.URL["DEV"], MINIO.URL[NODE_ENV_S])
+const NODE_ENV_S =  'DEV' // TODO 此处的赋值在表现上是具有延迟性的
 
 /**
  * minio初始化,并检测存储桶sssh是否存在
@@ -17,11 +21,11 @@ const initMinio = async (dbName = DEFINE_BUCKET_NAME) => {
     /** 根据miniojs的思想一定是nodejs express的服务器端 */
     if (!minioClient)
       minioClient = await new Minio.Client({
-        endPoint: "82.157.139.89",
+        endPoint: MINIO.URL[NODE_ENV_S],
         port: 9000,
         useSSL: false,
-        accessKey: "minio",
-        secretKey: "minio123456AS",
+        accessKey: MINIO.ACCESSKEY,
+        secretKey: MINIO.SECRETKEY,
       });
 
     const isExistBucket = await checkBucketExists();
@@ -155,8 +159,7 @@ const getFiles = async () => {
  * @return {object}
  */
 const putObject = (filePath, fileSize, fileName) => {
-
-  const fileStream = Fs.createReadStream(`${filePath}`)
+  const fileStream = Fs.createReadStream(`${filePath}`);
 
   return minioClient.putObject(bucketName, fileName, fileStream, fileSize);
 };

@@ -1,6 +1,6 @@
 /** api 轻量请求 */
 const formidable = require("formidable");
-const minio = require("./minio.mts");
+const minio = require("./minio.ts");
 const SUCCESS_CODE = "200";
 const ERROR_CODE = "500";
 
