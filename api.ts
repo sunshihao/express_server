@@ -1,8 +1,11 @@
 /** api 轻量请求 */
 const formidable = require("formidable");
 const minio = require("./minio.ts");
+const chat = require("./chatGPT.ts");
+
 const SUCCESS_CODE = "200";
 const ERROR_CODE = "500";
+
 
 module.exports.initAPi = (app) => {
   // minio 初始化
@@ -25,8 +28,6 @@ module.exports.initAPi = (app) => {
 
   /** 文件上传 */
   app.post("/uploadFile", (req, res, next) => {
-
-
     // console.log('req------------', req)
 
     const form = formidable();
@@ -38,7 +39,6 @@ module.exports.initAPi = (app) => {
       }
       console.log("parseparseparse", files, fields);
 
-      
       try {
         const minioRes = await minio.putObject(
           files.file.filepath,
@@ -47,7 +47,7 @@ module.exports.initAPi = (app) => {
         );
         res.json({
           code: SUCCESS_CODE,
-          message: '',
+          message: "",
           data: minioRes,
         });
       } catch (error) {
@@ -58,5 +58,18 @@ module.exports.initAPi = (app) => {
         });
       }
     });
+  });
+
+  /** 图片生成 */
+  app.get("/generateImage", async (req, res) => {
+
+    const imgRes = await chat.generateImage(req.query.describe);
+
+    await res.json({
+      code: SUCCESS_CODE,
+      message: "图片生成成功",
+      data: imgRes,
+    });
+    
   });
 };

@@ -85,6 +85,27 @@
                 ],
                 "responses": {}
             }
+        },
+        "/generateImage": {
+            "get": {
+                "x-swagger-router-controller": "home",
+                "operationId": "index",
+                "tags": [
+                    "/file"
+                ],
+                "description": "AI图片生成",
+                "parameters": [
+                    {
+                        "name": "describe",
+                        "description": "描述生成图片(仅限英文,形容越多越精确)",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "schema" : "a red cat"
+                    }
+                ],
+                "responses": {}
+            }
         }
     }
 }
