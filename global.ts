@@ -21,5 +21,5 @@ exports.MYSQL = {
 
 /** openAI code apikey */
 exports.OPENAI = {
-  APIKEY: "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"
+  APIKEY: "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"
 };

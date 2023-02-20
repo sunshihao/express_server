@@ -25,7 +25,7 @@ exports.generateImage = async (des) => {
 // AI Chat
 exports.chatAI = async (chatInfo) => {
 
-  console.log('chatInfo', chatInfo)
+  console.log('chatInfo---', chatInfo.toString('utf8'))
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
@@ -35,7 +35,7 @@ exports.chatAI = async (chatInfo) => {
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0.6,
-      stop: [], // 指定生成文本时应停止的单词或短语
+      stop: [" Human:", " AI:"] // 指定生成文本时应停止的单词或短语
     });
     // console.log('response response', response)
     return response.data;
