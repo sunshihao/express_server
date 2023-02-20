@@ -1,11 +1,11 @@
 /** api 轻量请求 */
 const formidable = require("formidable");
+
 const minio = require("./minio.ts");
 const chat = require("./chatGPT.ts");
 
 const SUCCESS_CODE = "200";
 const ERROR_CODE = "500";
-
 
 module.exports.initAPi = (app) => {
   // minio 初始化
@@ -61,9 +61,18 @@ module.exports.initAPi = (app) => {
   });
 
   /** 图片生成 */
-  app.get("/generateImage", async (req, res) => {
+  app.post("/generateImage", async (req, res) => {
 
-    const imgRes = await chat.generateImage(req.query.describe);
+    console.log('Body:', req.body);
+
+    if(!req.body.describe){
+      res.json({
+        code: ERROR_CODE,
+        message: "请按格式输入关键描述语",
+      });
+    }
+
+    const imgRes = await chat.generateImage(req.body.describe);
 
     await res.json({
       code: SUCCESS_CODE,

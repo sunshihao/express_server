@@ -18,3 +18,8 @@ exports.MYSQL = {
   PASSWORD: "123",
   DATABASE: "mysql"
 };
+
+/** openAI code apikey */
+exports.OPENAI = {
+  APIKEY: "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"
+};

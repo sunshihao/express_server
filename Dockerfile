@@ -15,5 +15,4 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 
 CMD [ "npm run pro" ]

@@ -1,5 +1,5 @@
 {
-    "swagger": "2.0",
+    "swagger": "2.0.0",
     "info": {
         "title": "express&swagger-ui",
         "description": "接口联调",
@@ -9,52 +9,6 @@
         "application/json"
     ],
     "paths": {
-        "/test": {
-            "post": {
-                "x-swagger-router-controller": "home",
-                "operationId": "index",
-                "tags": [
-                    "/test"
-                ],
-                "description": "[Login 123](https://www.google.com)",
-                "parameters": [
-                    {
-                        "name": "test",
-                        "in": "formData",
-                        "type": "array",
-                        "collectionFormat": "multi",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "profileId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "file",
-                        "in": "formData",
-                        "type": "file",
-                        "required": "true"
-                    }
-                ],
-                "responses": {}
-            }
-        },
-        "/bar": {
-            "get": {
-                "x-swagger-router-controller": "bar",
-                "operationId": "impossible",
-                "tags": [
-                    "/test"
-                ],
-                "description": "",
-                "parameters": [],
-                "responses": {}
-            }
-        },
         "/files": {
             "post": {
                 "x-swagger-router-controller": "home",
@@ -87,24 +41,41 @@
             }
         },
         "/generateImage": {
-            "get": {
+            "post": {
                 "x-swagger-router-controller": "home",
                 "operationId": "index",
                 "tags": [
-                    "/file"
+                    "/image"
                 ],
-                "description": "AI图片生成",
+                "description": "AI图片生成(请勿带有屏蔽词)",
                 "parameters": [
                     {
                         "name": "describe",
-                        "description": "描述生成图片(仅限英文,形容越多越精确)",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "schema" : "a red cat"
+                        "in": "body",
+                        "type": "object",
+                        "required": "true",
+                        "description": "JSON body",
+                        "schema": {
+                            "$ref": "#/definitions/ExampleRequestBody"
+                        }
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ExampleRequestBody": {
+            "type": "object",
+            "properties": {
+                "describe": {
+                    "type": "string",
+                    "default": "英文输入关键描述词"
+                }
             }
         }
     }

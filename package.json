@@ -11,13 +11,15 @@
   "author": "sssh",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "formidable": "2.1.1",
     "minio": "^7.0.32",
     "mongodb": "^5.0.1",
     "mysql": "^2.18.1",
     "openai": "^3.1.0",
-    "swagger-ui-express": "^4.6.0"
+    "swagger-ui-express": "^4.6.0",
+    "ws": "^8.12.1"
   },
   "devDependencies": {
     "@types/minio": "^7.0.15"
