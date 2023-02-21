@@ -25,7 +25,6 @@ module.exports.initAPi = (app) => {
 
   /** 文件上传 */
   app.post("/uploadFile", (req, res, next) => {
-    // console.log('req------------', req)
 
     const form = formidable();
 

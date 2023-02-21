@@ -31,7 +31,7 @@ exports.chatAI = async (chatInfo) => {
       model: "text-davinci-003",
       prompt: chatInfo.toString('utf8'), // 初始文本
       temperature: 0.9, // 用于控制生成文本的随机性和多样性。值越高，生成的文本越随机、多样
-      max_tokens: 2048, // 限制生成文本的长度,已经是最大限制了
+      max_tokens: 1024, // 限制生成文本的长度,已经是最大限制了
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0.6,

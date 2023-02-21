@@ -21,7 +21,7 @@ exports.MYSQL = {
 
 /** openAI code apikey */
 exports.OPENAI = {
-  APIKEY: "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"
+  APIKEY: "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"
 };
 
 exports.SUCCESS_CODE = "200"; // 成功code 

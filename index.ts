@@ -21,6 +21,8 @@ app.listen(PORT, () => {
   // 初始化请求
   api.initAPi(app);
 
+  // 初始化websocket
+  socket.initSocekt(app);
   // 初始化MYSQL连接
   // sql.initMySQL();
 })
