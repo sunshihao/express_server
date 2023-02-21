@@ -1,5 +1,6 @@
+/** mysql */
 const mysql = require("mysql");
-const { MYSQL } = require("./global.ts");
+const { MYSQL } = require("@/assets/global.ts");
 
 // Create a connection object
 let connection;

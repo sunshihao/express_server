@@ -1,6 +1,6 @@
 /** chatGPT应用 */
 const { Configuration, OpenAIApi } = require("openai");
-const { OPENAI } = require("./global.ts");
+const { OPENAI } = require("@/assets/global.ts");
 
 const configuration = new Configuration({
   apiKey: OPENAI.APIKEY,

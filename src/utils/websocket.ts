@@ -1,4 +1,4 @@
-/**  websocket 代码*/
+/**  websocket */
 const WebSockets = require("ws");
 const { chatAI } = require("./chatGPT.ts");
 

@@ -1,11 +1,8 @@
 /** api 轻量请求 */
 const formidable = require("formidable");
-
-const minio = require("./minio.ts");
-const chat = require("./chatGPT.ts");
-
-const SUCCESS_CODE = "200";
-const ERROR_CODE = "500";
+const minio = require("@/utils/minio.ts");
+const chat = require("@/utils/chatGPT.ts");
+const { ERROR_CODE, SUCCESS_CODE } = require("@/assets/global.ts");
 
 module.exports.initAPi = (app) => {
   // minio 初始化
@@ -37,7 +34,6 @@ module.exports.initAPi = (app) => {
         next(err);
         return;
       }
-      console.log("parseparseparse", files, fields);
 
       try {
         const minioRes = await minio.putObject(
@@ -62,10 +58,9 @@ module.exports.initAPi = (app) => {
 
   /** 图片生成 */
   app.post("/generateImage", async (req, res) => {
+    console.log("Body:", req.body);
 
-    console.log('Body:', req.body);
-
-    if(!req.body.describe){
+    if (!req.body.describe) {
       res.json({
         code: ERROR_CODE,
         message: "请按格式输入关键描述语",
@@ -79,6 +74,5 @@ module.exports.initAPi = (app) => {
       message: "图片生成成功",
       data: imgRes,
     });
-    
   });
 };

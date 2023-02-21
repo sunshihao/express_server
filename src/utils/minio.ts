@@ -1,7 +1,7 @@
 /** minio */
 const Minio = require("minio");
 const Fs = require("fs");
-const { MINIO } = require("./global.ts");
+const { MINIO } = require("@/assets/global.ts");
 const DEFINE_BUCKET_NAME = "sssh";
 
 let bucketName = DEFINE_BUCKET_NAME;

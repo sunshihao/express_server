@@ -1,12 +1,12 @@
+require('module-alias/register');
 const express = require('express');
+const app = express();
 const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
-const api = require("./api.ts"); 
-const sql = require("./mysql.ts");
+const api = require("@/server/api.ts"); 
+const sql = require("@/utils/mysql.ts");
+const socket = require("@/utils/websocket.ts"); 
 const swaggerDocument = require('./swagger.json');
-require("./websocket.ts"); 
-
-const app = express();
 
 const PORT = 5000
 
