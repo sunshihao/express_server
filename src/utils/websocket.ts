@@ -5,20 +5,22 @@ const https = require("node:https");
 const fs = require("node:fs");
 
 const path = require("path");
-const isSSL = false;
+const isSSL = true;
 
 /** 对websocket进行初始化 */
 exports.initSocekt = (app) => {
   const options = {
-    cert: fs.readFileSync(`${__dirname}/../assets/file/dhc.crt`), // 证书文件路径
-    key: fs.readFileSync(`${__dirname}/../assets/file/dhc.key`), // 私钥文件路径
+    cert: fs.readFileSync(`${__dirname}/dhc.crt`), // 证书文件路径
+    key: fs.readFileSync(`${__dirname}/dhc.key`), // 私钥文件路径
   };
 
   // 配置 HTTPS 服务器
   let wss;
   let server;
   if (isSSL) {
-    server = https.createServer(options);
+
+    server = https.createServer(options, app);
+
     wss = new WebSockets.Server({ server });
   } else {
     wss = new WebSockets.Server({ port: 8080 });
@@ -91,6 +93,12 @@ exports.initSocekt = (app) => {
   });
 
   if (isSSL) {
-    server.listen(8080);
+    server.listen(8080, err => {
+      if (err) {
+        console.log('Well, this didn\'t work...');
+        process.exit();
+      }
+      console.log('Server is listening on port ' + 8080);
+    });
   }
 };

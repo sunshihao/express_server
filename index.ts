@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const api = require("@/server/api.ts"); 
 const sql = require("@/utils/mysql.ts");
 const socket = require("@/utils/websocket.ts"); 
+
 const swaggerDocument = require('./swagger.json');
 
 const PORT = 5000
@@ -23,6 +24,7 @@ app.listen(PORT, () => {
 
   // 初始化websocket
   socket.initSocekt(app);
+
   // 初始化MYSQL连接
   // sql.initMySQL();
 })
