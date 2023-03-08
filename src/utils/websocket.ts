@@ -5,7 +5,7 @@ const https = require("node:https");
 const fs = require("node:fs");
 
 const path = require("path");
-const isSSL = true;
+const isSSL = false;
 
 /** 对websocket进行初始化 */
 exports.initSocekt = (app) => {
@@ -41,7 +41,8 @@ exports.initSocekt = (app) => {
               Buffer.from(
                 JSON.stringify({
                   code: "200",
-                  user: "SSSH",
+                  userName: "SSSH",
+                  userType: "human",
                   content: data.toString(),
                   date: "2023-02-20 13:45",
                 })
@@ -56,7 +57,8 @@ exports.initSocekt = (app) => {
                 Buffer.from(
                   JSON.stringify({
                     code: "200",
-                    user: "AI",
+                    userName: "AI",
+                    userType: "AI",
                     content: answerAI.choices[0].text,
                     message: "请求成功",
                     date: "2023-02-20 13:45",
@@ -68,7 +70,8 @@ exports.initSocekt = (app) => {
                 Buffer.from(
                   JSON.stringify({
                     code: "500",
-                    user: "AI",
+                    userName: "AI",
+                    userType: "AI",
                     content: "",
                     message: JSON.stringify(answerAI),
                     date: "2023-02-20 13:45",
