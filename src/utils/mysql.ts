@@ -30,23 +30,50 @@ const initMySQL = () => {
  * @param {object} dbName 数据库的名字
  * @return {object} bucket是否存在boolearn
  */
-const queryUser = ({ user, password }) => {
-  connection.query(
-    "SELECT * FROM users wherer user=? and password=?",
-    [user, password],
-    function (err, result) {
-      if (err) {
-        // Handle any errors
-        console.error("Error inserting data into MySQL: " + err.message);
-        return;
+const queryUser = ({ username, password }) => {
+
+  return new Promise((resolve, reject)=>{
+
+    // 连接状态查询 查询后关闭 数据库连接模型设计
+
+    connection.query(
+      "SELECT * FROM users where username=? and password=?",
+      [username, password],
+      function (err, result) {
+        if (err) {
+          // Handle any errors
+          console.error("Error query data from MySQL: " + err.message);
+          resolve ({
+            code: "500",
+            success: "false",
+            message: `登录异常,${err.message}`,
+            data: ""
+          })
+        }
+        // Log a success message
+        console.log("Inserted data into MySQL: " + result);
+  
+        if (Array.isArray(result) && result.length > 0) {
+          resolve ({
+            code: "200",
+            success: "true",
+            message: "登录成功",
+            data: ""
+          })
+        } else {
+          resolve ({
+            code: "201",
+            success: "true",
+            message: "登录失败,账号或密码错误",
+            data: ""
+          })
+        }
       }
-      // Log a success message
-      console.log("Inserted data into MySQL: " + result.affectedRows);
-    }
-  );
+    );
+  })
 };
 
 module.exports = {
   initMySQL,
-  queryUser
+  queryUser,
 };

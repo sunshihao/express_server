@@ -9,6 +9,29 @@
         "application/json"
     ],
     "paths": {
+        "/login": {
+            "post": {
+                "x-swagger-router-controller": "home",
+                "operationId": "index",
+                "tags": [
+                    "/user"
+                ],
+                "description": "用户登录",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "type": "object",
+                        "required": "true",
+                        "description": "JSON body",
+                        "schema": {
+                            "$ref": "#/definitions/userReqBody"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
         "/files": {
             "post": {
                 "x-swagger-router-controller": "home",
@@ -75,6 +98,23 @@
                 "describe": {
                     "type": "string",
                     "default": "英文输入关键描述词"
+                }
+            }
+        },
+        "userReqBody": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "default": "用户名"
+                },
+                "email": {
+                    "type": "string",
+                    "default": "邮箱"
+                },
+                "password": {
+                    "type": "string",
+                    "default": "密码"
                 }
             }
         }

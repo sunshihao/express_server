@@ -3,10 +3,14 @@ const formidable = require("formidable");
 const minio = require("@/utils/minio.ts");
 const chat = require("@/utils/chatGPT.ts");
 const { ERROR_CODE, SUCCESS_CODE } = require("@/assets/global.ts");
+const loginAPi = require("./login.ts");
 
 module.exports.initAPi = (app) => {
   // minio 初始化
   minio.initMinio("sssh");
+
+  // 登录接口初始化
+  loginAPi.initLoginAPi(app);
 
   /** 联通性测试 */
   app.get("/", (req, res) => {
@@ -25,7 +29,6 @@ module.exports.initAPi = (app) => {
 
   /** 文件上传 */
   app.post("/uploadFile", (req, res, next) => {
-
     const form = formidable();
 
     form.parse(req, async (err, fields, files) => {
