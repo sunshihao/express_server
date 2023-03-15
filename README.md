@@ -12,9 +12,14 @@ plan the following things
 * [x] webscoket + ssl
 * [x] chatGPT
 * [x] swagger-ui
-* [ ] mysql demo
+* [x] login jwt cookie
+* [x] mysql demo
+* [ ] redis
+* [ ] mq
 * [ ] mongodb
 * [ ] mongodb demo
 * [ ] a simple serverr
+* [ ] use in nestjs
+
 
 
