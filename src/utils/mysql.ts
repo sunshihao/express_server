@@ -31,9 +31,7 @@ const initMySQL = () => {
  * @return {object} bucket是否存在boolearn
  */
 const queryUser = ({ username, password }) => {
-
-  return new Promise((resolve, reject)=>{
-
+  return new Promise((resolve, reject) => {
     // 连接状态查询 查询后关闭 数据库连接模型设计
 
     connection.query(
@@ -43,34 +41,28 @@ const queryUser = ({ username, password }) => {
         if (err) {
           // Handle any errors
           console.error("Error query data from MySQL: " + err.message);
-          resolve ({
-            code: "500",
-            success: "false",
-            message: `登录异常,${err.message}`,
-            data: ""
-          })
+          resolve({
+            code: "500", // 查询异常
+            data: err.message,
+          });
         }
         // Log a success message
-        console.log("Inserted data into MySQL: " + result);
-  
+        console.log("query data from MySQL: " + result);
+
         if (Array.isArray(result) && result.length > 0) {
-          resolve ({
-            code: "200",
-            success: "true",
-            message: "登录成功",
-            data: ""
-          })
+          resolve({
+            code: "200", // 查询成功
+            data: result[0], // 正常一定是唯一的
+          });
         } else {
-          resolve ({
-            code: "201",
-            success: "true",
-            message: "登录失败,账号或密码错误",
-            data: ""
-          })
+          resolve({
+            code: "201", // 状态码201未查询到此人
+            data: "",
+          });
         }
       }
     );
-  })
+  });
 };
 
 module.exports = {

@@ -26,3 +26,6 @@ exports.OPENAI = {
 
 exports.SUCCESS_CODE = "200"; // 成功code 
 exports.ERROR_CODE = "500"; // 失败code
+
+/** JWT密钥 */
+exports.JWT_SECRET_KEY = "SSSH-ZYWZDDSJ";

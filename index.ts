@@ -23,7 +23,8 @@ app.all('*',function (req, res, next) {
 });
 
 // 使用中间件解析post请求的
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // "Content-Type": "application/json"
+app.use(bodyParser.text({ type: 'text/html' })); // "Content-Type": "text/html"
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
