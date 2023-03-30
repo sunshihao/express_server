@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "set NODE_ENV=DEV && node index.ts",
-    "pro": "set NODE_ENV=PRO && node index.ts"
+    "pro": "set NODE_ENV=PRO && node index.ts",
+    "build": "tsc"
   },
   "_moduleAliases": {
     "@": "src"

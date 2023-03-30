@@ -37,7 +37,7 @@ const initMinio = async (dbName = DEFINE_BUCKET_NAME) => {
 
     const buckets = await listBuckets();
 
-    console.log("buckets_buckets_buckets", buckets);
+    console.log("buckets初始化成功: ", buckets);
   } catch (err) {
     console.error(`err`, `minio初始化失败${err}`);
   }

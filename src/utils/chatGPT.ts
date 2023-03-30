@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const { OPENAI } = require("@/assets/global.ts");
 
 const configuration = new Configuration({
-  apiKey: OPENAI.APIKEY,
+  apiKey: global.SECRET_KEY? global.SECRET_KEY : OPENAI.APIKEY, // 若是有外部global使则进行使用
 });
 
 const openai = new OpenAIApi(configuration);

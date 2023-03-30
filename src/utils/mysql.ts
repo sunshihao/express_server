@@ -60,6 +60,8 @@ const queryUser = ({ username, password }) => {
             data: "",
           });
         }
+
+        // connection.release(); // 释放连接对象 connection.release is not a function  wori
       }
     );
   });
